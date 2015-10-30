@@ -4,8 +4,11 @@
 
 ##依赖项说明
 1.[Flex](http://flex.sourceforge.net/) 2.5.35 
+
 2.[Bison](https://www.gnu.org/software/bison/) 2.4.1
+
 (Windows版本可以使用[MinGW](http://www.mingw.org/)，OSX为自带)
+
 3.[Graphviz](http://www.graphviz.org/)(可选)，用于可视化生成AST树
 
 ##构建说明
