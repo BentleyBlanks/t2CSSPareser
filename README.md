@@ -3,7 +3,7 @@
 使用Flex+Bison完成CSS词法分析与语法分析工作，具体BNF是参考W3C中CSS2.0标准实现(实现了部分CSS3.0)。
 
 ##依赖项说明
-1.[Flex](http://flex.sourceforge.net/) 2.5.35 
+1.[Flex](http://flex.sourceforge.net/) 2.5.35
 
 2.[Bison](https://www.gnu.org/software/bison/) 2.4.1
 
@@ -18,9 +18,9 @@
 1.目前支持CSS2.0大部分特性，正如demo.css中显示的
 
 2.所有数值不带单位，例如
-```css 
+```css
 /* 已知错误 */
-font-size: 80; 
+font-size: 80;
 /* font-size: 80px; */
 
 ```
@@ -30,9 +30,16 @@ font-size: 80;
 
 4.目前语法错误无法检测具体错误类型，只能显示```Error: syntax error.```。
 
+5.目前规则不能为空，例如
+```css
+/* Syntax error */
+hello.a{}
+```
+在t2CSSParser中会被认为有语法错误,目前的解决办法是手工直接删除空规则，等待版本更新。
+
 ##可视化AST
 此为给出的demo.css生成的AST具体样式
-![AST](https://github.com/BentleyBlanks/t2CSSPareser/blob/master/AST/AST.png)
+![AST](https://raw.githubusercontent.com/BentleyBlanks/t2CSSPareser/master/AST/AST.png)
 
 
 ##关于作者
@@ -41,7 +48,3 @@ int 官某某 = "Bingo";
 
 char[] 个人博客 = "http://bentleyblanks.github.io";
 ```
-
-
-
-

@@ -1,5 +1,5 @@
 %pure-parser
-%parse-param { class t2CSSParser* parser }
+%parse-param { class t2CSSAST* parser }
 
 %{
   #include <iostream>
@@ -34,7 +34,7 @@
 
 
 %{
-  #include "t2CSSParser.hpp"
+  #include "t2CSSAST.h"
 
   #define YYLEX_PARAM parser->scaninfo
 
@@ -42,7 +42,7 @@
 
   int yyparse(t2CSSParser* parser); */
 
-  void yyerror(t2CSSParser* parser, const char *s) { 
+  void yyerror(t2CSSAST* parser, const char *s) { 
     printf("----------------------ERROR---------------------\n");
     if(!parser->root) printf("Error: Ast's root is null.\n"); 
     printf("Error content: %s.\n", s);

@@ -3,10 +3,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "t2CSSBison.hpp"
-#include "t2CSSLex.hpp"
-#include "t2CSSParser.hpp"
+#include "t2CSSLex.h"
+#include "t2CSSAST.h"
 
-extern int yyparse(t2CSSParser* parser);
+extern int yyparse(t2CSSAST* parser);
 
 void printAsDot(t2CSSNode* root);
 
@@ -27,7 +27,7 @@ void yyerror(const char *s)
 
 int main(int argc, char **argv) 
 {
-	t2CSSParser* parser = new t2CSSParser();
+	t2CSSAST* parser = new t2CSSAST();
 
 	if(yylex_init_extra(parser, &parser->scaninfo)){
 		perror("Inti alloc failed");

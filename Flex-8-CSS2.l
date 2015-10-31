@@ -6,7 +6,7 @@
 	#include <iostream>
 	#include <string> 
 	#include "t2CSSBison.hpp"
-	/* #include "t2CSSParser.hpp" */
+	/* #include "t2CSSAST.h" */
 
 	#define t2Token yylval->token
 	/* 额外传入的parser带有Flex需要的yyscan_t信息 */
@@ -14,12 +14,12 @@
 	#define t2SaveTokenString yylval->string = new std::string(yytext, yyleng)
 	#define t2SaveTokenNumber yylval->number = atof(std::string(yytext, yyleng).c_str())
 
-	void t2Log(const char* string, ...){
+	/* void t2Log(const char* string, ...){
 		va_list args;
 		va_start(args, string);
 		vprintf(string, args);
 		va_end(args);
-	}
+	} */
 
     /* int yylex(YYSTYPE * yylval_param, yyscan_t* scan_t); */
 %}
@@ -28,10 +28,10 @@
 /* Flex额外参数的具体类型 在yylex_init_extra时可使用到 */
 %option noyywrap
 %option case-insensitive
-%option header-file="t2CSSLex.hpp"
+%option header-file="t2CSSLex.h"
 %option reentrant 
 %option bison-bridge
-%option extra-type = "class t2CSSParser*"
+%option extra-type = "class t2CSSAST*"
 
 %s mediaquery
 %s forkeyword
@@ -74,7 +74,7 @@ nth             [\+-]?{intnum}*n([\t\r\n ]*[\+-][\t\r\n ]*{intnum})?
 %%
 
 %{
-	class t2CSSParser* parser = yyextra; 
+	class t2CSSAST* parser = yyextra; 
 %}
 
 \/\*[^*]*\*+([^/*][^*]*\*+)*\/ {/* ignore comments */ }

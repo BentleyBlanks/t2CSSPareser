@@ -25,7 +25,7 @@ t2CSSLex.cpp: Flex-8-CSS2.l
 
 clean:
 	rm -f t2CSSBison.hpp t2CSSBison.cpp
-	rm -f t2CSSLex.hpp t2CSSLex.cpp t2CSSLex.o
+	rm -f t2CSSLex.h t2CSSLex.cpp t2CSSLex.o
 	rm -f cssParser
 
 # t2CSSParser.cpp: Bison-4-CSS2.y
