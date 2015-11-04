@@ -1,6 +1,8 @@
 # t2CSSPareser
 
-使用Flex+Bison完成CSS词法分析与语法分析工作，具体BNF是参考W3C中CSS2.0标准实现(实现了部分CSS3.0)。
+使用Flex+Bison完成CSS词法分析与语法分析工作，具体BNF是参考[W3C](http://www.w3.org/TR/CSS21/grammar.html)中CSS2.0标准实现(实现了部分CSS3.0)。
+
+感谢[tang3w](http://tang3w.com/2015/02/01/%E4%BD%BF%E7%94%A8-lemon-%E5%AE%9E%E7%8E%B0-css-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8.html)给出了使用Flex+Lemon的简易CSS解析器实现，以及其推荐的[可视化AST](http://tang3w.com/2015/02/01/%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96.html)的实现方法。
 
 ## 依赖项说明
 1.[Flex](http://flex.sourceforge.net/) 2.5.35
@@ -39,6 +41,16 @@ font-size: 80;
 /* Syntax error */
 hello.a{}
 ```
+6.目前最后一个选择器后建议不加空格
+```css
+/* Unsupported */
+.haha {}
+
+/* supported */
+.haha{}
+```
+原因是生成的AST会认为```.haha```之后还有一个selector(紧跟的空格引起)，因此外部需要额外的解析工作来消除这一影响，但不影响正常解析。
+
 在t2CSSParser中会被认为有语法错误,目前的解决办法是手工直接删除空规则，等待版本。
 
 ## 可视化AST
