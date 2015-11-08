@@ -53,6 +53,9 @@ hello.a{}
 
 在t2CSSParser中会被认为有语法错误,目前的解决办法是手工直接删除空规则，等待版本。
 
+7.不支持类```function```的写法，如```color: rgba(...);```等
+
+
 ## 可视化AST
 此为给出的demo.css生成的AST具体样式
 ![AST](https://raw.githubusercontent.com/BentleyBlanks/t2CSSPareser/master/AST/AST.png)
